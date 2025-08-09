@@ -16,8 +16,6 @@ export function ThemeToggle() {
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
-    } else if (theme === "dark") {
-      setTheme("system");
     } else {
       setTheme("light");
     }
@@ -31,15 +29,12 @@ export function ThemeToggle() {
 
     if (theme === "light") return <Sun className="h-5 w-5" />;
     if (theme === "dark") return <Moon className="h-5 w-5" />;
-    return (
-      <div className="h-5 w-5 rounded-full bg-gradient-to-br from-orange-400 to-blue-500" />
-    );
   };
 
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full 
+      className="text-muted-foreground relative flex h-10 w-10 items-center justify-center rounded-full 
                  bg-background/80 backdrop-blur-sm border border-border/50
                  hover:bg-accent hover:text-accent-foreground transition-colors
                  focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -53,9 +48,7 @@ export function ThemeToggle() {
         duration: 0.3,
         ease: "easeInOut",
       }}
-      aria-label={`Switch to ${
-        theme === "light" ? "dark" : theme === "dark" ? "system" : "light"
-      } theme`}
+      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
     >
       <motion.div
         initial={false}

@@ -2,23 +2,158 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { Group } from "three";
 import { Download, ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import { animations } from "@/lib/utils";
 
-// 3D Animated Sphere Component
-function AnimatedSphere() {
+// 3D Animated Coding Scene Component
+function AnimatedCodingScene() {
+  const groupRef = React.useRef<Group>(null);
+
+  // Animate the entire group using useFrame
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += 0.003;
+      groupRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.05;
+    }
+  });
+
   return (
-    <Sphere visible args={[1, 100, 200]} scale={2}>
-      <MeshDistortMaterial
-        color="#0ea5a4"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0.4}
-      />
-    </Sphere>
+    <group ref={groupRef}>
+      {/* Floating Laptop/Monitor */}
+      <group position={[0, 0, 0]}>
+        {/* Screen */}
+        <mesh position={[0, 0.2, 0]}>
+          <boxGeometry args={[2.5, 1.8, 0.05]} />
+          <meshStandardMaterial color="#1e293b" />
+        </mesh>
+        {/* Screen bezel */}
+        <mesh position={[0, 0.2, -0.03]}>
+          <boxGeometry args={[2.6, 1.9, 0.02]} />
+          <meshStandardMaterial color="#334155" />
+        </mesh>
+        {/* Base */}
+        <mesh position={[0, -0.9, 0.2]}>
+          <boxGeometry args={[2.8, 0.1, 1.2]} />
+          <meshStandardMaterial color="#475569" />
+        </mesh>
+
+        {/* Code lines on screen */}
+        <mesh position={[-0.8, 0.5, 0.026]}>
+          <boxGeometry args={[0.8, 0.08, 0.001]} />
+          <meshStandardMaterial
+            color="#0ea5a4"
+            emissive="#0ea5a4"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+        <mesh position={[-0.6, 0.3, 0.026]}>
+          <boxGeometry args={[1.2, 0.08, 0.001]} />
+          <meshStandardMaterial
+            color="#7c3aed"
+            emissive="#7c3aed"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+        <mesh position={[-0.4, 0.1, 0.026]}>
+          <boxGeometry args={[0.6, 0.08, 0.001]} />
+          <meshStandardMaterial
+            color="#f59e0b"
+            emissive="#f59e0b"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+        <mesh position={[-0.7, -0.1, 0.026]}>
+          <boxGeometry args={[1.0, 0.08, 0.001]} />
+          <meshStandardMaterial
+            color="#10b981"
+            emissive="#10b981"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+        <mesh position={[-0.5, -0.3, 0.026]}>
+          <boxGeometry args={[1.4, 0.08, 0.001]} />
+          <meshStandardMaterial
+            color="#ef4444"
+            emissive="#ef4444"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+      </group>
+
+      {/* Floating Code Symbols */}
+
+      {/* Opening HTML Tag < > */}
+      <group position={[-2.5, 1.5, 1]} rotation={[0, Math.PI / 6, 0]}>
+        <mesh position={[-0.1, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
+          <boxGeometry args={[0.08, 0.8, 0.08]} />
+          <meshStandardMaterial
+            color="#7c3aed"
+            emissive="#7c3aed"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+        <mesh position={[0.1, 0, 0]} rotation={[0, 0, -Math.PI / 4]}>
+          <boxGeometry args={[0.08, 0.8, 0.08]} />
+          <meshStandardMaterial
+            color="#7c3aed"
+            emissive="#7c3aed"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+      </group>
+
+      {/* Closing HTML Tag </ > */}
+      <group position={[2.5, 1.5, 1]} rotation={[0, -Math.PI / 6, 0]}>
+        <mesh position={[-0.1, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
+          <boxGeometry args={[0.08, 0.8, 0.08]} />
+          <meshStandardMaterial
+            color="#7c3aed"
+            emissive="#7c3aed"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+        <mesh position={[0.1, 0, 0]} rotation={[0, 0, -Math.PI / 4]}>
+          <boxGeometry args={[0.08, 0.8, 0.08]} />
+          <meshStandardMaterial
+            color="#7c3aed"
+            emissive="#7c3aed"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+        {/* Forward slash for closing tag */}
+        <mesh position={[-0.25, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
+          <boxGeometry args={[0.06, 0.5, 0.06]} />
+          <meshStandardMaterial
+            color="#7c3aed"
+            emissive="#7c3aed"
+            emissiveIntensity={0.3}
+          />
+        </mesh>
+      </group>
+
+      {/* Floating Semicolon ; */}
+      <group position={[0, -2.5, 1.5]}>
+        <mesh position={[0, 0.2, 0]}>
+          <sphereGeometry args={[0.1]} />
+          <meshStandardMaterial
+            color="#0ea5a4"
+            emissive="#0ea5a4"
+            emissiveIntensity={0.4}
+          />
+        </mesh>
+        <mesh position={[0, -0.15, 0]} rotation={[0, 0, 0.3]}>
+          <boxGeometry args={[0.06, 0.3, 0.06]} />
+          <meshStandardMaterial
+            color="#0ea5a4"
+            emissive="#0ea5a4"
+            emissiveIntensity={0.4}
+          />
+        </mesh>
+      </group>
+    </group>
   );
 }
 
@@ -133,7 +268,7 @@ export function Hero() {
             {/* Greeting */}
             <motion.div className="mb-4" variants={animations.fadeIn}>
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm">
-                👋 Hello, I'm
+                👋 Hello, I&apos;m
               </span>
             </motion.div>
 
@@ -248,15 +383,20 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.5 }}
           >
             <div className="w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 backdrop-blur-sm border border-border/50">
-              <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-                <ambientLight intensity={0.4} />
-                <pointLight position={[10, 10, 10]} intensity={1} />
+              <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
+                <ambientLight intensity={0.6} />
+                <pointLight position={[5, 5, 5]} intensity={1.2} />
                 <pointLight
-                  position={[-10, -10, -5]}
-                  intensity={0.5}
+                  position={[-5, -5, 3]}
+                  intensity={0.8}
                   color="#7c3aed"
                 />
-                <AnimatedSphere />
+                <pointLight
+                  position={[0, 5, -5]}
+                  intensity={0.6}
+                  color="#f59e0b"
+                />
+                <AnimatedCodingScene />
                 <OrbitControls
                   enableZoom={false}
                   enablePan={false}

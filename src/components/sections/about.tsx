@@ -91,7 +91,7 @@ function TimelineItem({
         whileHover={{ scale: 1.02, y: -4 }}
         transition={{ duration: 0.2 }}
       >
-        <div className="bg-card border border-border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+        <div className="text-muted-foreground bg-card border border-border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
           <div className="flex items-start gap-4 mb-4">
             <div
               className={`p-3 rounded-xl ${
@@ -109,7 +109,7 @@ function TimelineItem({
                 {item.title}
               </h3>
               <p className="text-primary font-medium mb-1">{item.company}</p>
-              <div className="flex items-center gap-4 text-muted-foreground text-sm mb-3">
+              <div className="flex items-center gap-4 text-sm mb-3">
                 <div className="flex items-center gap-1">
                   <Calendar size={14} />
                   <span>{item.period}</span>
@@ -122,15 +122,13 @@ function TimelineItem({
             </div>
           </div>
 
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            {item.description}
-          </p>
+          <p className="mb-4 leading-relaxed">{item.description}</p>
 
           <div className="flex flex-wrap gap-2">
             {item.technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
+                className="px-3 py-1 bg-muted text-xs rounded-full hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
               >
                 {tech}
               </span>
@@ -231,7 +229,7 @@ export function About() {
           </motion.div>
 
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold font-plus-jakarta mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl text-muted-foreground font-bold font-plus-jakarta mb-6"
             variants={animations.slideInLeft}
           >
             My{" "}
@@ -252,7 +250,7 @@ export function About() {
         </motion.div>
 
         {/* Stats Section */}
-        <motion.div
+        {/* <motion.div
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 p-8 bg-muted/30 rounded-3xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -263,7 +261,7 @@ export function About() {
           <StatItem label="Projects Completed" value="50+" delay={0.2} />
           <StatItem label="Technologies" value="20+" delay={0.3} />
           <StatItem label="Happy Clients" value="30+" delay={0.4} />
-        </motion.div>
+        </motion.div> */}
 
         {/* Personal Introduction */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
@@ -273,18 +271,18 @@ export function About() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="space-y-6">
+            <div className="text-muted-foreground space-y-6">
               <div>
                 <h3 className="text-2xl font-bold font-plus-jakarta mb-4">
                   Crafting Digital Experiences
                 </h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="leading-relaxed mb-4">
                   From concept to deployment, I bring ideas to life through
                   clean, efficient code and thoughtful design. My expertise
                   spans the full development stack, allowing me to build
                   comprehensive solutions from database to user interface.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="leading-relaxed">
                   When I'm not coding, you'll find me exploring new
                   technologies, contributing to open-source projects, or sharing
                   knowledge through technical writing and mentoring.
@@ -363,13 +361,11 @@ export function About() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="text-center mb-12">
+          <div className="text-muted-foreground text-center mb-12">
             <h3 className="text-2xl sm:text-3xl font-bold font-plus-jakarta mb-4">
               Professional Timeline
             </h3>
-            <p className="text-muted-foreground">
-              Key milestones in my professional journey
-            </p>
+            <p>Key milestones in my professional journey</p>
           </div>
 
           {/* Timeline Container */}
@@ -411,14 +407,14 @@ export function About() {
                     </div>
 
                     {/* Content */}
-                    <div className="flex-1 bg-card border border-border rounded-2xl p-6">
+                    <div className="flex-1 text-muted-foreground bg-card border border-border rounded-2xl p-6">
                       <h3 className="text-lg font-bold font-plus-jakarta mb-1">
                         {item.title}
                       </h3>
                       <p className="text-primary font-medium mb-1">
                         {item.company}
                       </p>
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-muted-foreground text-sm mb-3">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm mb-3">
                         <div className="flex items-center gap-1">
                           <Calendar size={14} />
                           <span>{item.period}</span>
@@ -428,14 +424,12 @@ export function About() {
                           <span>{item.location}</span>
                         </div>
                       </div>
-                      <p className="text-muted-foreground mb-4">
-                        {item.description}
-                      </p>
+                      <p className="mb-4">{item.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {item.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full"
+                            className="px-3 py-1 bg-muted text-xs rounded-full"
                           >
                             {tech}
                           </span>

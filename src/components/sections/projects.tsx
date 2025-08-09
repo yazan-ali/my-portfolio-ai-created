@@ -187,7 +187,7 @@ function ProjectCard({
 
       {/* Project Content */}
       <div className="p-6">
-        <h3 className="text-xl font-bold font-plus-jakarta mb-3 group-hover:text-primary transition-colors">
+        <h3 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-xl font-bold font-plus-jakarta mb-3 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
 
@@ -254,7 +254,7 @@ export function Projects() {
   });
 
   return (
-    <section id="projects" className="py-20 bg-muted/30">
+    <section id="projects" className="py-20 bg-muted">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -273,7 +273,7 @@ export function Projects() {
           </motion.div>
 
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold font-plus-jakarta mb-6"
+            className="text-muted-foreground text-3xl sm:text-4xl lg:text-5xl font-bold font-plus-jakarta mb-6"
             variants={animations.slideInLeft}
           >
             Featured{" "}
@@ -293,14 +293,14 @@ export function Projects() {
         </motion.div>
 
         {/* Filters and Search */}
-        <motion.div
+        {/* <motion.div
           className="flex flex-col sm:flex-row gap-4 mb-12 items-center justify-between"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-        >
-          {/* Category Filters */}
-          <div className="flex flex-wrap gap-2">
+        > */}
+        {/* Category Filters */}
+        {/* <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
               <motion.button
                 key={category.id}
@@ -316,10 +316,10 @@ export function Projects() {
                 {category.label} ({category.count})
               </motion.button>
             ))}
-          </div>
+          </div> */}
 
-          {/* Search */}
-          <div className="relative">
+        {/* Search */}
+        {/* <div className="relative">
             <input
               type="text"
               placeholder="Search projects..."
@@ -329,7 +329,7 @@ export function Projects() {
             />
             <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
