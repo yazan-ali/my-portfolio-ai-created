@@ -359,7 +359,7 @@ export function Hero() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground 
+                    className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground 
                              transition-colors duration-200"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}

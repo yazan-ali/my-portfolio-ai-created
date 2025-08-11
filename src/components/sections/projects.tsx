@@ -254,7 +254,7 @@ export function Projects() {
   });
 
   return (
-    <section id="projects" className="py-20 bg-muted">
+    <section id="projects" className="py-20 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
