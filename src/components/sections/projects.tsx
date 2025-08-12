@@ -10,94 +10,56 @@ import { animations } from "@/lib/utils";
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Decentralized Crowdfunding Platform",
     description:
-      "A full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product catalog, shopping cart, and payment processing.",
+      "A Web3-based crowdfunding platform built with blockchain technology to prevent fraud and ensure transparent fund usage. Contributors act as campaign approvers, reviewing and voting on spending requests before funds are released, promoting community-driven trust and accountability.",
     image: "/api/placeholder/600/400",
-    tags: ["React", "Node.js", "TypeScript", "MongoDB", "Stripe"],
-    category: "fullstack",
-    github: "https://github.com/yourusername/ecommerce",
-    live: "https://ecommerce-demo.com",
-    featured: true,
+    tags: [
+      "Next.js",
+      "Shadcn UI",
+      "Blockchain",
+      "Solidity",
+      "Smart Contracts",
+      "Web3",
+      "Remix IDE",
+    ],
+    github: "https://github.com/yazan-ali/web3-kickstarter",
+    live: "https://web3-kickstarter-one.vercel.app",
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "ASCO Publications",
     description:
-      "A collaborative task management application with real-time updates, drag & drop functionality, and team collaboration features.",
+      "A medical publishing platform by the American Society of Clinical Oncology (ASCO), published by Wolters Kluwer. It provides access to peer-reviewed oncology journals, clinical research, and educational resources for cancer professionals.",
     image: "/api/placeholder/600/400",
-    tags: ["Next.js", "Socket.io", "Prisma", "PostgreSQL"],
-    category: "fullstack",
-    github: "https://github.com/yourusername/taskmanager",
-    live: "https://taskmanager-demo.com",
-    featured: true,
+    tags: ["HTML", "SCSS", "JavaScript", "TypeScript", "Webpack", "Jest"],
+    live: "https://ascopubs.org",
   },
   {
     id: 3,
-    title: "AI Chat Interface",
+    title: "Neurology Journals",
     description:
-      "Modern chat interface with AI integration, featuring real-time messaging, file sharing, and smart responses.",
+      "Neurology is the official weekly peer‐reviewed medical journal of the American Academy of Neurology (AAN), published by Wolters Kluwer. It delivers cutting‐edge research, clinical findings, and educational content for neurologists and neuroscience professionals",
     image: "/api/placeholder/600/400",
-    tags: ["React", "OpenAI", "WebSocket", "Tailwind"],
-    category: "frontend",
-    github: "https://github.com/yourusername/ai-chat",
-    live: "https://ai-chat-demo.com",
-    featured: false,
+    tags: ["HTML", "SCSS", "JavaScript", "TypeScript", "Webpack", "Jest"],
+    live: "https://www.neurology.org",
   },
   {
     id: 4,
-    title: "Weather Dashboard",
+    title: "Graduation Project",
     description:
-      "Beautiful weather dashboard with location-based forecasts, interactive maps, and detailed weather analytics.",
+      "A web application designed to digitize the academic promotion process at my university, which previously lacked an online system. The platform supports multi-step workflows where each step requires supervisor review and approval. Faculty members can submit and track promotion requests, while supervisors can manage approvals, upload required documents, and form review.",
     image: "/api/placeholder/600/400",
-    tags: ["Vue.js", "Weather API", "Chart.js", "Mapbox"],
-    category: "frontend",
-    github: "https://github.com/yourusername/weather-dashboard",
-    live: "https://weather-dashboard-demo.com",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Microservices API",
-    description:
-      "Scalable microservices architecture with Docker, Kubernetes, and comprehensive API documentation.",
-    image: "/api/placeholder/600/400",
-    tags: ["Node.js", "Docker", "Kubernetes", "Redis", "PostgreSQL"],
-    category: "backend",
-    github: "https://github.com/yourusername/microservices-api",
-    live: "",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Data Visualization Tool",
-    description:
-      "Interactive data visualization platform for analyzing and presenting complex datasets with various chart types.",
-    image: "/api/placeholder/600/400",
-    tags: ["D3.js", "React", "Python", "FastAPI"],
-    category: "fullstack",
-    github: "https://github.com/yourusername/data-viz",
-    live: "https://dataviz-demo.com",
-    featured: false,
-  },
-];
-
-const categories = [
-  { id: "all", label: "All Projects", count: projects.length },
-  {
-    id: "fullstack",
-    label: "Full Stack",
-    count: projects.filter((p) => p.category === "fullstack").length,
-  },
-  {
-    id: "frontend",
-    label: "Frontend",
-    count: projects.filter((p) => p.category === "frontend").length,
-  },
-  {
-    id: "backend",
-    label: "Backend",
-    count: projects.filter((p) => p.category === "backend").length,
+    tags: [
+      "React.js",
+      "Material UI",
+      "Redux",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+    github:
+      "https://github.com/yazan-ali/promotion-system-my-graduation-project",
   },
 ];
 
