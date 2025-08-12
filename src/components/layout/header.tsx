@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import React from "react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
-import { cn } from "@/lib/utils"
+import React from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Home", href: "#hero" },
@@ -14,25 +14,25 @@ const navigation = [
   { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
-]
+];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-  const [scrolled, setScrolled] = React.useState(false)
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10
-      setScrolled(isScrolled)
-    }
+      const isScrolled = window.scrollY > 10;
+      setScrolled(isScrolled);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <motion.header
@@ -77,8 +77,8 @@ export function Header() {
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium relative group"
                     onClick={() => {
                       // Smooth scroll to section
-                      const element = document.querySelector(item.href)
-                      element?.scrollIntoView({ behavior: "smooth" })
+                      const element = document.querySelector(item.href);
+                      element?.scrollIntoView({ behavior: "smooth" });
                     }}
                   >
                     {item.name}
@@ -124,17 +124,23 @@ export function Header() {
               <motion.div
                 key={item.name}
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
-                transition={{ duration: 0.3, delay: isMenuOpen ? index * 0.1 : 0 }}
+                animate={{
+                  opacity: isMenuOpen ? 1 : 0,
+                  x: isMenuOpen ? 0 : -20,
+                }}
+                transition={{
+                  duration: 0.3,
+                  delay: isMenuOpen ? index * 0.1 : 0,
+                }}
               >
                 <Link
                   href={item.href}
                   className="block px-3 py-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors duration-200 font-medium"
                   onClick={() => {
-                    setIsMenuOpen(false)
+                    setIsMenuOpen(false);
                     // Smooth scroll to section
-                    const element = document.querySelector(item.href)
-                    element?.scrollIntoView({ behavior: "smooth" })
+                    const element = document.querySelector(item.href);
+                    element?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
                   {item.name}
@@ -145,5 +151,5 @@ export function Header() {
         </motion.div>
       </nav>
     </motion.header>
-  )
+  );
 }

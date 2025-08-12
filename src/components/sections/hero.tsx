@@ -2,160 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { Group } from "three";
-import { Download, ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+
+import { ChevronDown, Github, Linkedin, Mail, File, Phone } from "lucide-react";
 import { animations } from "@/lib/utils";
-
-// 3D Animated Coding Scene Component
-function AnimatedCodingScene() {
-  const groupRef = React.useRef<Group>(null);
-
-  // Animate the entire group using useFrame
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.003;
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.05;
-    }
-  });
-
-  return (
-    <group ref={groupRef}>
-      {/* Floating Laptop/Monitor */}
-      <group position={[0, 0, 0]}>
-        {/* Screen */}
-        <mesh position={[0, 0.2, 0]}>
-          <boxGeometry args={[2.5, 1.8, 0.05]} />
-          <meshStandardMaterial color="#1e293b" />
-        </mesh>
-        {/* Screen bezel */}
-        <mesh position={[0, 0.2, -0.03]}>
-          <boxGeometry args={[2.6, 1.9, 0.02]} />
-          <meshStandardMaterial color="#334155" />
-        </mesh>
-        {/* Base */}
-        <mesh position={[0, -0.9, 0.2]}>
-          <boxGeometry args={[2.8, 0.1, 1.2]} />
-          <meshStandardMaterial color="#475569" />
-        </mesh>
-
-        {/* Code lines on screen */}
-        <mesh position={[-0.8, 0.5, 0.026]}>
-          <boxGeometry args={[0.8, 0.08, 0.001]} />
-          <meshStandardMaterial
-            color="#0ea5a4"
-            emissive="#0ea5a4"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-        <mesh position={[-0.6, 0.3, 0.026]}>
-          <boxGeometry args={[1.2, 0.08, 0.001]} />
-          <meshStandardMaterial
-            color="#7c3aed"
-            emissive="#7c3aed"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-        <mesh position={[-0.4, 0.1, 0.026]}>
-          <boxGeometry args={[0.6, 0.08, 0.001]} />
-          <meshStandardMaterial
-            color="#f59e0b"
-            emissive="#f59e0b"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-        <mesh position={[-0.7, -0.1, 0.026]}>
-          <boxGeometry args={[1.0, 0.08, 0.001]} />
-          <meshStandardMaterial
-            color="#10b981"
-            emissive="#10b981"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-        <mesh position={[-0.5, -0.3, 0.026]}>
-          <boxGeometry args={[1.4, 0.08, 0.001]} />
-          <meshStandardMaterial
-            color="#ef4444"
-            emissive="#ef4444"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-      </group>
-
-      {/* Floating Code Symbols */}
-
-      {/* Opening HTML Tag < > */}
-      <group position={[-2.5, 1.5, 1]} rotation={[0, Math.PI / 6, 0]}>
-        <mesh position={[-0.1, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
-          <boxGeometry args={[0.08, 0.8, 0.08]} />
-          <meshStandardMaterial
-            color="#7c3aed"
-            emissive="#7c3aed"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-        <mesh position={[0.1, 0, 0]} rotation={[0, 0, -Math.PI / 4]}>
-          <boxGeometry args={[0.08, 0.8, 0.08]} />
-          <meshStandardMaterial
-            color="#7c3aed"
-            emissive="#7c3aed"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-      </group>
-
-      {/* Closing HTML Tag </ > */}
-      <group position={[2.5, 1.5, 1]} rotation={[0, -Math.PI / 6, 0]}>
-        <mesh position={[-0.1, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
-          <boxGeometry args={[0.08, 0.8, 0.08]} />
-          <meshStandardMaterial
-            color="#7c3aed"
-            emissive="#7c3aed"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-        <mesh position={[0.1, 0, 0]} rotation={[0, 0, -Math.PI / 4]}>
-          <boxGeometry args={[0.08, 0.8, 0.08]} />
-          <meshStandardMaterial
-            color="#7c3aed"
-            emissive="#7c3aed"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-        {/* Forward slash for closing tag */}
-        <mesh position={[-0.25, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
-          <boxGeometry args={[0.06, 0.5, 0.06]} />
-          <meshStandardMaterial
-            color="#7c3aed"
-            emissive="#7c3aed"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-      </group>
-
-      {/* Floating Semicolon ; */}
-      <group position={[0, -2.5, 1.5]}>
-        <mesh position={[0, 0.2, 0]}>
-          <sphereGeometry args={[0.1]} />
-          <meshStandardMaterial
-            color="#0ea5a4"
-            emissive="#0ea5a4"
-            emissiveIntensity={0.4}
-          />
-        </mesh>
-        <mesh position={[0, -0.15, 0]} rotation={[0, 0, 0.3]}>
-          <boxGeometry args={[0.06, 0.3, 0.06]} />
-          <meshStandardMaterial
-            color="#0ea5a4"
-            emissive="#0ea5a4"
-            emissiveIntensity={0.4}
-          />
-        </mesh>
-      </group>
-    </group>
-  );
-}
 
 // Typing Animation Component
 function TypingText({ text, className }: { text: string; className?: string }) {
@@ -184,6 +33,262 @@ function TypingText({ text, className }: { text: string; className?: string }) {
   );
 }
 
+// Animated Code Terminal Component
+function AnimatedCodeTerminal() {
+  const [currentSnippet, setCurrentSnippet] = React.useState(0);
+  const [displayedCode, setDisplayedCode] = React.useState("");
+  const [currentCharIndex, setCurrentCharIndex] = React.useState(0);
+  const [isTyping, setIsTyping] = React.useState(true);
+
+  // Code snippets with realistic, properly formatted code
+  const codeSnippets = React.useMemo(
+    () => [
+      {
+        filename: "portfolio.tsx",
+        language: "TypeScript React",
+        code: `import React from 'react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, Phone } from 'lucide-react';
+
+export const Hero = () => {
+  const skills = ['React', 'TypeScript', 'Next.js'];
+  
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="hero-section"
+    >
+      <div className="container mx-auto px-4">
+        <h1 className="text-5xl font-bold">
+          Hi, I'm <span className="text-primary">Yazan</span>
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Software Engineer & Full Stack Developer
+        </p>
+        
+        <div className="flex gap-4 mt-6">
+          {skills.map(skill => (
+            <span key={skill} className="tech-tag">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.section>
+  );
+};`,
+      },
+      {
+        filename: "api/auth.ts",
+        language: "Next.js API",
+        code: `import { NextRequest, NextResponse } from 'next/server';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { connectDB } from '@/lib/database';
+import User from '@/models/User';
+
+export async function POST(request: NextRequest) {
+  try {
+    await connectDB();
+    
+    const { email, password } = await request.json();
+    
+    // Validate input
+    if (!email || !password) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+    
+    // Check if user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return NextResponse.json(
+        { error: 'Invalid credentials' },
+        { status: 401 }
+      );
+    }
+    
+    // Verify password
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    if (!isValidPassword) {
+      return NextResponse.json(
+        { error: 'Invalid credentials' },
+        { status: 401 }
+      );
+    }
+    
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user._id, email: user.email },
+      process.env.JWT_SECRET!,
+      { expiresIn: '7d' }
+    );
+    
+    return NextResponse.json({
+      success: true,
+      token,
+      user: {
+        id: user._id,
+        email: user.email,
+        name: user.name
+      }
+    });
+    
+  } catch (error) {
+    console.error('Auth error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}`,
+      },
+      {
+        filename: "terminal",
+        language: "Terminal",
+        code: `yazan@portfolio:~$ npm create next-app@latest my-portfolio
+✓ Would you like to use TypeScript? Yes
+✓ Would you like to use ESLint? Yes  
+✓ Would you like to use Tailwind CSS? Yes
+✓ Would you like to use App Router? Yes
+✓ Would you like to customize the import alias? No
+
+Creating a new Next.js app in /Users/yazan/my-portfolio...
+
+Installing dependencies:
+- react
+- react-dom  
+- next
+- typescript
+- tailwindcss
+- framer-motion
+
+yazan@portfolio:~$ cd my-portfolio
+
+yazan@portfolio:~/my-portfolio$ npm run dev
+▲ Next.js 15.0.0
+- Local:        http://localhost:3000
+- Network:      http://192.168.1.100:3000
+
+✓ Ready in 2.1s
+✓ Compiled successfully
+
+yazan@portfolio:~/my-portfolio$ git init
+Initialized empty Git repository
+
+yazan@portfolio:~/my-portfolio$ git add .
+yazan@portfolio:~/my-portfolio$ git commit -m "feat: initial portfolio setup"
+
+[main f8e9a1c] feat: initial portfolio setup
+ 42 files changed, 1,247 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 package.json
+
+yazan@portfolio:~/my-portfolio$ npm run build
+▲ Next.js 15.0.0
+
+✓ Checking validity of types
+✓ Creating an optimized production build
+✓ Compiled successfully
+✓ Collecting page data
+✓ Generating static pages (7/7)
+✓ Collecting build traces
+✓ Finalizing page optimization
+
+Route (app)               Size     First Load JS
+┌ ○ /                     142 B    87.2 kB
+└ ○ /_not-found           871 B    87.9 kB
+
+○ (Static) prerendered as static content
+
+🚀 Portfolio deployed successfully!`,
+      },
+    ],
+    []
+  );
+
+  // Reset and start typing next snippet
+  const startNextSnippet = React.useCallback(() => {
+    setCurrentCharIndex(0);
+    setDisplayedCode("");
+    setIsTyping(true);
+    setCurrentSnippet((prev) => (prev + 1) % codeSnippets.length);
+  }, [codeSnippets.length]);
+
+  // Typing animation effect
+  React.useEffect(() => {
+    if (!isTyping) return;
+
+    const fullCode = codeSnippets[currentSnippet].code;
+
+    if (currentCharIndex < fullCode.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedCode(fullCode.slice(0, currentCharIndex + 1));
+        setCurrentCharIndex((prev) => prev + 1);
+      }, 25); // Faster typing speed
+      return () => clearTimeout(timeout);
+    } else {
+      // Finished typing, pause before next snippet
+      setIsTyping(false);
+      const timeout = setTimeout(startNextSnippet, 2500); // Shorter pause
+      return () => clearTimeout(timeout);
+    }
+  }, [
+    currentCharIndex,
+    currentSnippet,
+    isTyping,
+    startNextSnippet,
+    codeSnippets,
+  ]);
+
+  const currentSnippetData = codeSnippets[currentSnippet];
+
+  return (
+    <div className="w-full h-full rounded-2xl overflow-hidden bg-[#1e1e1e] border border-border/50 shadow-2xl">
+      {/* Terminal Header */}
+      <div className="bg-[#2d2d30] border-b border-gray-700 px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          </div>
+          <div className="text-gray-300 text-sm font-medium ml-4">
+            {currentSnippetData.filename}
+          </div>
+        </div>
+        <div className="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">
+          {currentSnippetData.language}
+        </div>
+      </div>
+
+      {/* Code Content */}
+      <div className="p-4 h-[calc(100%-60px)] overflow-hidden relative">
+        <div className="font-mono text-sm leading-relaxed">
+          <pre className="text-gray-300 whitespace-pre-wrap">
+            {displayedCode}
+            {/* Blinking Cursor */}
+            {isTyping && (
+              <motion.span
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+                className="inline-block w-2 h-5 bg-primary ml-1"
+              />
+            )}
+          </pre>
+        </div>
+
+        {/* Gradient fade at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#1e1e1e] to-transparent pointer-events-none"></div>
+      </div>
+    </div>
+  );
+}
+
 // Floating Particles Background
 function ParticlesBackground() {
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
@@ -204,7 +309,7 @@ function ParticlesBackground() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const particlesCount = 50;
+  const particlesCount = 15; // Reduced from 50 for better performance
 
   // Don't render particles until we have dimensions
   if (dimensions.width === 0 || dimensions.height === 0) {
@@ -226,9 +331,10 @@ function ParticlesBackground() {
         y: Math.random() * dimensions.height,
       }}
       transition={{
-        duration: Math.random() * 20 + 10,
+        duration: Math.random() * 30 + 20, // Slower, less CPU intensive
         repeat: Infinity,
         repeatType: "reverse",
+        ease: "linear", // More efficient than default easing
       }}
     />
   ));
@@ -287,7 +393,7 @@ export function Hero() {
               className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-6 min-h-[2em]"
               variants={animations.slideInLeft}
             >
-              <TypingText text="Full Stack Developer & UI/UX Enthusiast" />
+              <TypingText text="Software Engineer & Full Stack Developer" />
             </motion.h2>
 
             {/* Description */}
@@ -295,9 +401,9 @@ export function Hero() {
               className="text-lg text-muted-foreground mb-8 max-w-2xl"
               variants={animations.fadeIn}
             >
-              I craft exceptional digital experiences with modern technologies.
-              Passionate about clean code, beautiful design, and innovative
-              solutions that make a difference.
+              I build scalable web applications and elegant user interfaces that
+              solve real-world problems. Driven by curiosity and a commitment to
+              excellence, I transform ideas into impactful digital solutions.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -317,16 +423,16 @@ export function Hero() {
               </motion.button>
 
               <motion.a
-                href="/cv.pdf"
-                download
+                href="https://drive.google.com/file/d/1ZiVImK3DOrYSG538vvHcQYPYM4oD1JZU/view?usp=sharing"
                 className="px-8 py-4 border border-border hover:bg-muted text-foreground
                          rounded-full font-medium text-lg transition-all duration-200
                          flex items-center justify-center gap-2"
+                target="_blank"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Download size={20} />
-                Download CV
+                <File size={20} />
+                View CV
               </motion.a>
             </motion.div>
 
@@ -338,18 +444,23 @@ export function Hero() {
               {[
                 {
                   icon: Github,
-                  href: "https://github.com/yourusername",
+                  href: "https://github.com/yazan-ali",
                   label: "GitHub",
                 },
                 {
                   icon: Linkedin,
-                  href: "https://linkedin.com/in/yourusername",
+                  href: "https://www.linkedin.com/in/yazan-abuali-564a76177",
                   label: "LinkedIn",
                 },
                 {
                   icon: Mail,
-                  href: "mailto:your.email@example.com",
+                  href: "mailto:yazanabuali2000@gmail.com",
                   label: "Email",
+                },
+                {
+                  icon: Phone,
+                  href: "tel:+962751976253",
+                  label: "Phone",
                 },
               ].map((social, index) => {
                 const Icon = social.icon;
@@ -375,38 +486,16 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right side - 3D Scene */}
+          {/* Right side - Code Terminal */}
           <motion.div
             className="relative h-96 lg:h-[600px]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <div className="w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 backdrop-blur-sm border border-border/50">
-              <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
-                <ambientLight intensity={0.6} />
-                <pointLight position={[5, 5, 5]} intensity={1.2} />
-                <pointLight
-                  position={[-5, -5, 3]}
-                  intensity={0.8}
-                  color="#7c3aed"
-                />
-                <pointLight
-                  position={[0, 5, -5]}
-                  intensity={0.6}
-                  color="#f59e0b"
-                />
-                <AnimatedCodingScene />
-                <OrbitControls
-                  enableZoom={false}
-                  enablePan={false}
-                  autoRotate
-                  autoRotateSpeed={0.5}
-                />
-              </Canvas>
-            </div>
+            <AnimatedCodeTerminal />
 
-            {/* Floating elements around 3D scene */}
+            {/* Floating elements around terminal */}
             <motion.div
               className="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-full blur-xl"
               animate={{

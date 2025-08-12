@@ -3,28 +3,32 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, Heart, ArrowUp, Phone } from "lucide-react";
 
 const socialLinks = [
   {
+    name: "Email",
+    icon: Mail,
+    href: "mailto:yazanabuali2000@gmail.com",
+    color: "hover:text-red-500",
+  },
+  {
+    name: "Phone",
+    icon: Phone,
+    href: "tel:+962751976253",
+    color: "hover:text-green-500",
+  },
+  {
     name: "GitHub",
-    href: "https://github.com/yourusername",
     icon: Github,
+    href: "https://github.com/yazan-ali",
+    color: "hover:text-gray-900 dark:hover:text-white",
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/in/yourusername",
     icon: Linkedin,
-  },
-  {
-    name: "Twitter",
-    href: "https://twitter.com/yourusername",
-    icon: Twitter,
-  },
-  {
-    name: "Email",
-    href: "mailto:your.email@example.com",
-    icon: Mail,
+    href: "https://www.linkedin.com/in/yazan-abuali-564a76177",
+    color: "hover:text-blue-600",
   },
 ];
 
@@ -120,7 +124,7 @@ export function Footer() {
             <div className="space-y-2">
               <p className="text-muted-foreground">
                 <Mail className="inline w-4 h-4 mr-2" />
-                your.email@example.com
+                yazanabuali2000@gmail.com
               </p>
               <p className="text-muted-foreground">Open for opportunities</p>
               <p className="text-muted-foreground">Remote & On-site</p>
@@ -131,9 +135,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-1 text-muted-foreground mb-4 md:mb-0">
-            <span>Built with</span>
-            <Heart className="w-4 h-4 text-red-500" />
-            <span>using Next.js & Tailwind CSS</span>
+            <span>Built with Next.js & Tailwind CSS</span>
           </div>
 
           <div className="flex items-center space-x-4">

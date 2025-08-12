@@ -20,32 +20,26 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    href: "mailto:your.email@example.com",
+    href: "mailto:yazanabuali2000@gmail.com",
     color: "hover:text-red-500",
   },
   {
     name: "Phone",
     icon: Phone,
-    href: "tel:+15551234567",
+    href: "tel:+962751976253",
     color: "hover:text-green-500",
   },
   {
     name: "GitHub",
     icon: Github,
-    href: "https://github.com/yourusername",
+    href: "https://github.com/yazan-ali",
     color: "hover:text-gray-900 dark:hover:text-white",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com/in/yourusername",
+    href: "https://www.linkedin.com/in/yazan-abuali-564a76177",
     color: "hover:text-blue-600",
-  },
-  {
-    name: "Twitter",
-    icon: Twitter,
-    href: "https://twitter.com/yourusername",
-    color: "hover:text-blue-400",
   },
 ];
 
@@ -115,16 +109,15 @@ export function Contact() {
     try {
       // Replace these with your actual EmailJS credentials
       await emailjs.send(
-        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        "service_45he3qp", // Replace with your EmailJS service ID
+        "template_9qwhpjr", // Replace with your EmailJS template ID
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          name: formData.name,
+          email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          to_name: "Yazan", // Replace with your name
         },
-        "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
+        "user_auNJsV3PDr7FaeOTFIm72" // Replace with your EmailJS public key
       );
 
       setSubmitStatus("success");
@@ -415,24 +408,6 @@ export function Contact() {
               </motion.div>
             )}
           </form>
-        </motion.div>
-
-        {/* Availability Status */}
-        <motion.div
-          className="max-w-md mx-auto mt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
-            <div className="flex items-center justify-center gap-3">
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="font-medium text-green-700 dark:text-green-300">
-                Available for new projects
-              </span>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

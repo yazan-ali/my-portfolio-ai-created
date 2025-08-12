@@ -9,6 +9,8 @@ import {
   Briefcase,
   Code,
   Award,
+  Users,
+  Lightbulb,
 } from "lucide-react";
 import { animations } from "@/lib/utils";
 
@@ -17,50 +19,66 @@ const timelineData = [
   {
     id: 1,
     type: "work",
-    title: "Senior Full Stack Developer",
-    company: "Tech Innovations Inc.",
-    location: "San Francisco, CA",
+    title: "Software Engineer",
+    company: "Atypon",
+    location: "Amman, Jordan",
     period: "2022 - Present",
     description:
-      "Lead development of scalable web applications using React, Node.js, and AWS. Mentored junior developers and implemented DevOps practices.",
-    technologies: ["React", "Node.js", "AWS", "TypeScript", "Docker"],
+      "Led development for major client projects including ascopubs.org, neurology.org, and dl.acm.org. Contributed to developing an automation tool that streamlined code releases, hotfixes, and GitHub integrations, significantly improving deployment efficiency. Led unit testing initiatives covering 65% of test suite, and mentored interns and new engineers.",
+    technologies: [
+      "HTML",
+      "SCSS",
+      "TypeScript",
+      "React",
+      "Material UI",
+      "Node.js",
+      "NestJS",
+      "MySQL",
+      "Docker",
+      "Git",
+      "Jest",
+    ],
     icon: Briefcase,
   },
   {
     id: 2,
     type: "work",
     title: "Full Stack Developer",
-    company: "Digital Solutions Ltd.",
-    location: "New York, NY",
-    period: "2020 - 2022",
+    company: "Norsia",
+    location: "Amman, Jordan",
+    period: "2020 - 2021",
     description:
-      "Built responsive web applications and RESTful APIs. Collaborated with design team to implement pixel-perfect UIs.",
-    technologies: ["Vue.js", "Express", "PostgreSQL", "JavaScript"],
-    icon: Code,
+      "Developed complex widgets and components including a comprehensive survey feature with drag-and-drop, sortable elements, and search functionality. Refactored legacy class components to modern React Hooks, improving code clarity and reusability. Implemented JWT-based authentication and middleware access control systems.",
+    technologies: [
+      "React",
+      "Material UI",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT",
+    ],
+    icon: Briefcase,
   },
   {
     id: 3,
     type: "education",
-    title: "Bachelor of Computer Science",
-    company: "University of Technology",
-    location: "Boston, MA",
-    period: "2016 - 2020",
+    title: "Bachelor of Software Engineering",
+    company: "World Islamic Sciences And Education University",
+    location: "Amman, Jordan",
+    period: "2018 - 2022",
     description:
-      "Graduated Magna Cum Laude. Focused on software engineering, algorithms, and database systems.",
-    technologies: ["Java", "Python", "C++", "SQL"],
+      "Graduated with Excellent honors. Specialized in software engineering principles, data structures, algorithms, and full-stack development. Strong foundation in object-oriented programming, and system design.",
+    technologies: [
+      "Java",
+      "Python",
+      "SQL",
+      "Data Structures & Algorithms",
+      "Object-Oriented Programming",
+      "Software Testing",
+      "Software Development",
+      "System Design",
+    ],
     icon: GraduationCap,
-  },
-  {
-    id: 4,
-    type: "achievement",
-    title: "AWS Certified Solutions Architect",
-    company: "Amazon Web Services",
-    location: "Online",
-    period: "2021",
-    description:
-      "Earned professional certification demonstrating expertise in designing distributed systems on AWS.",
-    technologies: ["AWS", "Cloud Architecture", "DevOps"],
-    icon: Award,
   },
 ];
 
@@ -178,7 +196,8 @@ function TimelineItem({
 }
 
 // Stats Component
-function StatItem({
+// eslint-disable-next-line no-unused-vars
+const StatItem = ({
   label,
   value,
   delay,
@@ -186,7 +205,7 @@ function StatItem({
   label: string;
   value: string;
   delay: number;
-}) {
+}) => {
   return (
     <motion.div
       className="text-center"
@@ -207,7 +226,7 @@ function StatItem({
       <div className="text-muted-foreground font-medium">{label}</div>
     </motion.div>
   );
-}
+};
 
 export function About() {
   return (
@@ -242,7 +261,7 @@ export function About() {
             className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
             variants={animations.fadeIn}
           >
-            I'm a passionate full-stack developer with over 4 years of
+            I&apos;m a passionate full-stack developer with over 4 years of
             experience building digital solutions that matter. My journey in
             tech has been driven by curiosity, continuous learning, and a desire
             to create meaningful user experiences.
@@ -282,11 +301,6 @@ export function About() {
                   spans the full development stack, allowing me to build
                   comprehensive solutions from database to user interface.
                 </p>
-                <p className="leading-relaxed">
-                  When I'm not coding, you'll find me exploring new
-                  technologies, contributing to open-source projects, or sharing
-                  knowledge through technical writing and mentoring.
-                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4 pt-4">
@@ -304,6 +318,24 @@ export function About() {
                   <div>
                     <div className="font-semibold">Continuous</div>
                     <div className="text-sm text-muted-foreground">Learner</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl">
+                  <Users className="w-8 h-8 text-accent" />
+                  <div>
+                    <div className="font-semibold">Team</div>
+                    <div className="text-sm text-muted-foreground">
+                      Leadership
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl">
+                  <Lightbulb className="w-8 h-8 text-primary" />
+                  <div>
+                    <div className="font-semibold">Creative</div>
+                    <div className="text-sm text-muted-foreground">
+                      Problem Solver
+                    </div>
                   </div>
                 </div>
               </div>

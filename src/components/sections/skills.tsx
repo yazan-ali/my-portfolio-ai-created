@@ -5,96 +5,53 @@ import { motion } from "framer-motion";
 import { Code, Zap } from "lucide-react";
 import { animations } from "@/lib/utils";
 
-// Skills data - organized by expertise level and category
-const skillsData = {
-  // Core/Expert skills (larger tags)
-  expert: [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "JavaScript",
-    "Node.js",
-    "Tailwind CSS",
-    "PostgreSQL",
-    "Express.js",
-  ],
-
-  // Proficient skills (medium tags)
-  proficient: [
-    "Vue.js",
-    "Framer Motion",
-    "MongoDB",
-    "GraphQL",
-    "Docker",
-    "AWS",
-    "React Native",
-    "Fastify",
-    "Prisma",
-  ],
-
-  // Familiar skills (smaller tags)
-  familiar: [
-    "Flutter",
-    "Swift",
-    "Kotlin",
-    "Kubernetes",
-    "CI/CD",
-    "Terraform",
-    "Redis",
-    "Python",
-    "Go",
-  ],
-};
-
-// Alternative: Category-based organization (used by commented alternative designs)
-/* 
-const skillCategories = {
-  frontend: {
-    title: "Frontend",
-    icon: Globe,
-    skills: ["React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
-  },
-  backend: {
-    title: "Backend", 
-    icon: Database,
-    skills: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "GraphQL", "Prisma"]
-  },
-  mobile: {
-    title: "Mobile",
-    icon: Smartphone, 
-    skills: ["React Native", "Flutter", "Swift", "Kotlin"]
-  },
-  devops: {
-    title: "DevOps & Cloud",
-    icon: Cloud,
-    skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform"]
-  }
-};
-*/
+// All skills in one array
+const skillsData = [
+  "HTML",
+  "CSS",
+  "Sass",
+  "JavaScript",
+  "TypeScript",
+  "React.js",
+  "Next.js",
+  "Redux",
+  "Redux Toolkit",
+  "Material UI",
+  "Shadcn UI",
+  "Tailwind CSS",
+  "Node.js",
+  "Express.js",
+  "NestJS",
+  "Java",
+  "Spring Boot",
+  "MongoDB",
+  "SQL",
+  "GraphQL",
+  "Blockchain",
+  "Web3",
+  "Smart Contracts",
+  "Solidity",
+  "Object-Oriented Programming",
+  "Data Structures & Algorithms",
+  "Design Patterns",
+];
 
 // Tools and technologies
 const tools = [
-  "VS Code",
   "Git",
   "GitHub",
-  "Figma",
-  "Postman",
-  "Slack",
+  "DevTools",
+  "Docker",
+  "Cursor AI",
+  "VS Code",
   "Jira",
-  "Notion",
-  "Linear",
-  "Vercel",
-  "Netlify",
-  "Railway",
+  "Postman",
+  "npm",
 ];
 
 // Simple Uniform Tags
 function UniformTags() {
-  const allSkills = [
-    ...skillsData.expert,
-    ...skillsData.proficient,
-    ...skillsData.familiar,
-  ];
+  const allSkills = skillsData;
 
   return (
     <div className="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto">
