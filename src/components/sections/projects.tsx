@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Github, ExternalLink } from "lucide-react";
 
 // Project data
 const projects = [
@@ -62,205 +61,129 @@ const projects = [
   },
 ];
 
-// Project Carousel Component
-function ProjectCarousel() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+// Stacked Project Card Component
+function StackedProjectCard({
+  project,
+  index,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+}) {
+  const cardRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "start start"],
+  });
 
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  const currentProject = projects[currentIndex];
+  // Transform scroll progress to y position for stacking effect
+  // Cards start lower and slide up to cover previous cards
+  const y = useTransform(scrollYProgress, [0, 1], [200, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto">
-      <div className="relative overflow-hidden rounded-3xl bg-card border border-border shadow-2xl">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, x: 300 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -300 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="w-full"
-          >
-            {/* Full Width Layout: Image + Content Side by Side */}
-            <div className="flex flex-col lg:flex-row min-h-[500px] lg:min-h-[600px]">
-              {/* Project Image */}
-              <div className="relative lg:w-1/2 h-64 lg:h-auto overflow-hidden">
-                <Image
-                  src={currentProject.image}
-                  alt={currentProject.title}
-                  fill
-                  className="object-cover"
-                />
+    <div ref={cardRef} className="h-screen">
+      <motion.div
+        className="sticky top-20 h-fit w-full max-w-5xl mx-auto bg-card border border-border rounded-3xl overflow-hidden shadow-2xl"
+        style={{
+          y,
+          scale,
+          opacity,
+          zIndex: index + 1,
+        }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        {/* Full Width Content */}
+        <div className="w-full min-h-[400px] flex flex-col justify-center">
+          {/* Project Content */}
+          <div className="w-full p-8 lg:p-16 text-center max-w-4xl mx-auto">
+            <motion.h3
+              className="text-4xl lg:text-5xl font-bold font-plus-jakarta mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              {project.title}
+            </motion.h3>
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/50 to-transparent" />
+            <motion.p
+              className="text-muted-foreground text-xl mb-10 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              {project.description}
+            </motion.p>
 
-                {/* Action Buttons */}
-                <div className="absolute bottom-6 left-6 flex gap-3">
-                  {currentProject.github && (
-                    <motion.a
-                      href={currentProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Github size={20} />
-                    </motion.a>
-                  )}
-                  {currentProject.live && (
-                    <motion.a
-                      href={currentProject.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <ExternalLink size={20} />
-                    </motion.a>
-                  )}
-                </div>
-              </div>
-
-              {/* Project Content */}
-              <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                <motion.h3
-                  className="text-3xl lg:text-4xl font-bold font-plus-jakarta mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+            {/* Tags */}
+            <motion.div
+              className="flex flex-wrap gap-3 mb-8 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              {project.tags.map((tag, tagIndex) => (
+                <motion.span
+                  key={tag}
+                  className="px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4 + tagIndex * 0.1 }}
                 >
-                  {currentProject.title}
-                </motion.h3>
+                  {tag}
+                </motion.span>
+              ))}
+            </motion.div>
 
-                <motion.p
-                  className="text-muted-foreground text-lg mb-8 leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
+            {/* Links */}
+            <motion.div
+              className="flex gap-6 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              {project.github && (
+                <motion.a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-medium text-lg"
+                  whileHover={{ x: 5 }}
                 >
-                  {currentProject.description}
-                </motion.p>
-
-                {/* Tags */}
-                <motion.div
-                  className="flex flex-wrap gap-3 mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
+                  <Github size={20} />
+                  View Code
+                </motion.a>
+              )}
+              {project.live && (
+                <motion.a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium text-lg hover:bg-primary/90 transition-colors"
+                  whileHover={{ scale: 1.05 }}
                 >
-                  {currentProject.tags.map((tag, tagIndex) => (
-                    <motion.span
-                      key={tag}
-                      className="px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.4 + tagIndex * 0.05 }}
-                    >
-                      {tag}
-                    </motion.span>
-                  ))}
-                </motion.div>
-
-                {/* Links */}
-                <motion.div
-                  className="flex gap-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  {currentProject.github && (
-                    <motion.a
-                      href={currentProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-muted-foreground border border-border px-6 py-3 rounded-lg  hover:text-primary transition-colors font-medium text-lg"
-                      whileHover={{ x: 5 }}
-                    >
-                      <Github size={20} />
-                      View Code
-                    </motion.a>
-                  )}
-                  {currentProject.live && (
-                    <motion.a
-                      href={currentProject.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium text-lg hover:bg-primary/90 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <ExternalLink size={20} />
-                      Live Site
-                    </motion.a>
-                  )}
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Navigation Buttons */}
-        <motion.button
-          onClick={goToPrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/20 backdrop-blur-sm rounded-full text-white hover:bg-black/40 transition-colors z-10"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <ChevronLeft size={24} />
-        </motion.button>
-
-        <motion.button
-          onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/20 backdrop-blur-sm rounded-full text-white hover:bg-black/40 transition-colors z-10"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <ChevronRight size={24} />
-        </motion.button>
-      </div>
-
-      {/* Dots Pagination */}
-      <div className="flex justify-center gap-3 mt-8">
-        {projects.map((_, index) => (
-          <motion.button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentIndex
-                ? "bg-primary"
-                : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-            }`}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          />
-        ))}
-      </div>
-
-      {/* Project Counter */}
-      <div className="text-center mt-4 text-sm text-muted-foreground">
-        {currentIndex + 1} of {projects.length}
-      </div>
+                  <ExternalLink size={20} />
+                  Live Demo
+                </motion.a>
+              )}
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
 
 export function Projects() {
+  // Display all projects for stacked animation
+  const filteredProjects = projects;
+
   return (
-    <section id="projects" className="py-20 bg-background">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="relative bg-background">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
@@ -302,15 +225,30 @@ export function Projects() {
           </motion.p>
         </motion.div>
 
-        {/* Project Carousel */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <ProjectCarousel />
-        </motion.div>
+        {/* Stacked Projects */}
+        <div className="relative mt-20">
+          {filteredProjects.map((project, index) => (
+            <StackedProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+            />
+          ))}
+        </div>
+
+        {/* No results */}
+        {filteredProjects.length === 0 && (
+          <motion.div
+            className="text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <p className="text-muted-foreground text-lg">
+              No projects found matching your criteria. Try adjusting your
+              filters.
+            </p>
+          </motion.div>
+        )}
       </div>
     </section>
   );
