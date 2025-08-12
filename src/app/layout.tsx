@@ -18,9 +18,10 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: {
     default: "Yazan - Portfolio & Blog",
-    template: "%s | Yazan - Portfolio & Blog"
+    template: "%s | Yazan - Portfolio & Blog",
   },
-  description: "Professional portfolio showcasing my development experience, projects, and blog posts. Modern, fast, and interactive.",
+  description:
+    "Professional portfolio showcasing my development experience, projects, and blog posts. Modern, fast, and interactive.",
   keywords: [
     "portfolio",
     "developer",
@@ -39,13 +40,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://yourportfolio.com",
     title: "Yazan - Portfolio & Blog",
-    description: "Professional portfolio showcasing my development experience, projects, and blog posts.",
+    description:
+      "Professional portfolio showcasing my development experience, projects, and blog posts.",
     siteName: "Yazan Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Yazan - Portfolio & Blog",
-    description: "Professional portfolio showcasing my development experience, projects, and blog posts.",
+    description:
+      "Professional portfolio showcasing my development experience, projects, and blog posts.",
     creator: "@yourusername",
   },
   robots: {
@@ -72,10 +75,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased min-h-screen bg-background text-foreground`}
       >
-        <ThemeProvider
-          defaultTheme="system"
-          storageKey="portfolio-theme"
-        >
+        <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
           {children}
         </ThemeProvider>
       </body>

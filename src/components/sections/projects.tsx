@@ -150,7 +150,7 @@ function StackedProjectCard({
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-medium text-lg"
+                  className="flex items-center gap-2 text-muted-foreground border border-border px-6 py-3 rounded-lg hover:text-primary transition-colors font-medium text-lg"
                   whileHover={{ x: 5 }}
                 >
                   <Github size={20} />
@@ -166,7 +166,7 @@ function StackedProjectCard({
                   whileHover={{ scale: 1.05 }}
                 >
                   <ExternalLink size={20} />
-                  Live Demo
+                  Live Site
                 </motion.a>
               )}
             </motion.div>
