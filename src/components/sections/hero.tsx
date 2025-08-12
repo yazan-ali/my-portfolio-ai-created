@@ -459,7 +459,7 @@ export function Hero() {
                 },
                 {
                   icon: Phone,
-                  href: "tel:+962751976253",
+                  href: "tel:+962781976253",
                   label: "Phone",
                 },
               ].map((social, index) => {
