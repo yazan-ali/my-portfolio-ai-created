@@ -58,7 +58,7 @@ export function Header() {
               href="#hero"
               className="text-2xl font-bold font-plus-jakarta bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity"
             >
-              Yazan
+              Yazan Abuali
             </Link>
           </motion.div>
 

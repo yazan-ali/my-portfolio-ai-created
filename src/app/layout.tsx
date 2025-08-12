@@ -17,8 +17,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Yazan - Portfolio & Blog",
-    template: "%s | Yazan - Portfolio & Blog",
+    default: "Yazan Abuali",
+    template: "%s | Yazan Abuali",
   },
   description:
     "Professional portfolio showcasing my development experience, projects, and blog posts. Modern, fast, and interactive.",
@@ -39,14 +39,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://yourportfolio.com",
-    title: "Yazan - Portfolio & Blog",
+    title: "Yazan Abuali",
     description:
       "Professional portfolio showcasing my development experience, projects, and blog posts.",
     siteName: "Yazan Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yazan - Portfolio & Blog",
+    title: "Yazan Abuali",
     description:
       "Professional portfolio showcasing my development experience, projects, and blog posts.",
     creator: "@yourusername",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  metadataBase: new URL("https://yourportfolio.com"),
+  metadataBase: new URL("https://yazan-abuali.com"),
 };
 
 export default function RootLayout({
