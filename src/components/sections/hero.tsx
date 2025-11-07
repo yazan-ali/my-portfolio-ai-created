@@ -423,7 +423,7 @@ export function Hero() {
               </motion.button>
 
               <motion.a
-                href="https://drive.google.com/file/d/1ZiVImK3DOrYSG538vvHcQYPYM4oD1JZU/view?usp=sharing"
+                href="https://drive.google.com/file/d/1UlraWohDk7yw-Rw9rQGigC1h0TjMqpuf/view?usp=drivesdk"
                 className="px-8 py-4 border border-border hover:bg-muted text-foreground
                          rounded-full font-medium text-lg transition-all duration-200
                          flex items-center justify-center gap-2"
