@@ -10,7 +10,7 @@ const projects = [
   id: 1,
   title: "Agentic Codebase Analyzer",
   description:
-    "A multi-agent AI system that analyzes codebases the way a small expert team would — mapping architecture, reviewing code quality and tests, and scanning for security risks. Specialized agents run in a coordinated pipeline with shared context, streaming structured reports to a live dashboard with scorecards, dependency graphs, issue diffs, and a unified priority ranking. Includes one-click Apply Fix for vulnerabilities, best practices recommendations and suggested test generation.",
+    "A multi-agent AI system that analyzes local codebases the way a small expert team would — mapping architecture, reviewing code quality and tests, and scanning for security risks. Specialized agents run in a coordinated pipeline with shared context, streaming structured reports to a live dashboard with scorecards, dependency graphs, issue diffs, and a unified priority ranking. Includes one-click Apply Fix for vulnerabilities, best practices recommendations and suggested test generation.",
   image: "/api/placeholder/600/400",
   tags: [
     "React",
