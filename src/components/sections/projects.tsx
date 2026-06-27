@@ -26,6 +26,7 @@ const projects = [
     "SSE",
   ],
   github: "https://github.com/yazan-ali/agentic-codebase-analyzer",
+  live: "https://agentic-codebase-analyzer-5cht.onrender.com",
 },
   {
     id: 2,
@@ -122,7 +123,7 @@ function StackedProjectCard({
           {/* Project Content */}
           <div className="w-full p-8 lg:p-16 text-center max-w-4xl mx-auto">
             <motion.h3
-              className="text-4xl lg:text-5xl font-bold font-plus-jakarta mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+              className="text-4xl lg:text-5xl font-bold font-plus-jakarta mb-8 pb-1.5 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -131,7 +132,7 @@ function StackedProjectCard({
             </motion.h3>
 
             <motion.p
-              className="text-muted-foreground text-xl mb-10 pb-1.5 leading-relaxed"
+              className="text-muted-foreground text-xl mb-10 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
