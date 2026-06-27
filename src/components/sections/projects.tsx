@@ -7,7 +7,28 @@ import { Github, ExternalLink } from "lucide-react";
 // Project data
 const projects = [
   {
-    id: 1,
+  id: 1,
+  title: "Agentic Codebase Analyzer",
+  description:
+    "A multi-agent AI system that analyzes codebases the way a small expert team would — mapping architecture, reviewing code quality and tests, and scanning for security risks. Specialized agents run in a coordinated pipeline with shared context, streaming structured reports to a live dashboard with scorecards, dependency graphs, issue diffs, and a unified priority ranking. Includes one-click Apply Fix for vulnerabilities, best practices recommendations and suggested test generation.",
+  image: "/api/placeholder/600/400",
+  tags: [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Vite",
+    "Node.js",
+    "Express",
+    "Gemini AI",
+    "Multi-Agent AI",
+    "React Flow",
+    "Zod",
+    "SSE",
+  ],
+  github: "https://github.com/yazan-ali/agentic-codebase-analyzer",
+},
+  {
+    id: 2,
     title: "Decentralized Crowdfunding Platform",
     description:
       "A Web3-based crowdfunding platform built with blockchain technology to prevent fraud and ensure transparent fund usage. Contributors act as campaign approvers, reviewing and voting on spending requests before funds are released, promoting community-driven trust and accountability.",
@@ -25,7 +46,7 @@ const projects = [
     live: "https://web3-kickstarter-one.vercel.app",
   },
   {
-    id: 2,
+    id: 3,
     title: "ASCO Publications",
     description:
       "A medical publishing platform by the American Society of Clinical Oncology (ASCO), published by Wolters Kluwer. It provides access to peer-reviewed oncology journals, clinical research, and educational resources for cancer professionals.",
@@ -34,7 +55,7 @@ const projects = [
     live: "https://ascopubs.org",
   },
   {
-    id: 3,
+    id: 4,
     title: "Neurology Journals",
     description:
       "Neurology is the official weekly peer‐reviewed medical journal of the American Academy of Neurology (AAN), published by Wolters Kluwer. It delivers cutting‐edge research, clinical findings, and educational content for neurologists and neuroscience professionals",
@@ -43,7 +64,7 @@ const projects = [
     live: "https://www.neurology.org",
   },
   {
-    id: 4,
+    id: 5,
     title: "Graduation Project",
     description:
       "A web application designed to digitize the academic promotion process at my university, which previously lacked an online system. The platform supports multi-step workflows where each step requires supervisor review and approval. Faculty members can submit and track promotion requests, while supervisors can manage approvals, upload required documents, and form review.",
@@ -110,7 +131,7 @@ function StackedProjectCard({
             </motion.h3>
 
             <motion.p
-              className="text-muted-foreground text-xl mb-10 leading-relaxed"
+              className="text-muted-foreground text-xl mb-10 pb-1.5 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
